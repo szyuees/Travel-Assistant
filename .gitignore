@@ -12,16 +12,16 @@ __pycache__/
 travelbot_env/
 
 # Data and model outputs
-data/*.csv
-data/*.json
+# data/*.csv
+# data/*.json
 
 # OS files
 .DS_Store
 
 # Reports and documents
-*.pdf
-*.docx
-*.pptx
+# *.pdf
+# *.docx
+# *.pptx
 
 # IDE and notebook settings
 .vscode/
