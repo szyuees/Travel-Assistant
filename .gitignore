@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environment
+.env
+.venv/
+travelbot_env/
+
+# Data and model outputs
+data/*.csv
+data/*.json
+
+# OS files
+.DS_Store
+
+# Reports and documents
+*.pdf
+*.docx
+*.pptx
+
+# IDE and notebook settings
+.vscode/
+.idea/
