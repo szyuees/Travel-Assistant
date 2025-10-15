@@ -1,10 +1,127 @@
 [
   {
-    "question": "What is the baggage allowance for Singapore Airlines?",
-    "answer": "The baggage allowance varies by ticket class. Economy passengers can check in 25kg, Business 35kg."
+    "question": "Do I need a visa to visit Singapore as a tourist?",
+    "answer": "Citizens from most countries do not need a visa for short visits to Singapore. However, travelers from certain nations must apply in advance through the Singapore Immigration & Checkpoints Authority website."
   },
   {
-    "question": "How do I get from Changi Airport to Marina Bay Sands?",
-    "answer": "You can take the MRT (Downtown Line) to Bayfront Station or a taxi (approx. 20 minutes)."
+    "question": "How can I get from Changi Airport to the city center?",
+    "answer": "Changi Airport is connected to downtown Singapore by the MRT train system, which takes around 30 minutes. Taxis and airport shuttle services are also available 24 hours a day."
+  },
+  {
+    "question": "What is the best time to visit Singapore?",
+    "answer": "Singapore has a tropical climate year-round, but February to April are generally the driest months. It’s best to carry light clothing and an umbrella as rain can occur anytime."
+  },
+  {
+    "question": "Are there any cultural customs I should observe in Singapore?",
+    "answer": "Yes. Avoid eating or drinking on public transport and remove shoes before entering someone’s home or a temple. Politeness and cleanliness are highly valued."
+  },
+  {
+    "question": "Is tap water safe to drink in Singapore?",
+    "answer": "Yes, Singapore’s tap water meets World Health Organization standards. It is safe to drink straight from the tap without filtration."
+  },
+
+  {
+    "question": "What is the best way to travel around Seoul?",
+    "answer": "Seoul’s public transport system is extensive, with a reliable subway and bus network. T-Money cards can be used for seamless transfers between different modes of transport."
+  },
+  {
+    "question": "Are credit cards widely accepted in Seoul?",
+    "answer": "Credit cards are accepted at most hotels, restaurants, and stores. However, it’s advisable to carry some cash for small shops and traditional markets."
+  },
+  {
+    "question": "Do I need to tip in South Korea?",
+    "answer": "Tipping is not customary in South Korea, and service charges are usually included in bills. A polite thank-you is sufficient in most situations."
+  },
+  {
+    "question": "When is the best season to visit Seoul?",
+    "answer": "Spring (April–June) and autumn (September–November) offer mild weather and colorful scenery. Winters can be very cold, while summers are hot and humid."
+  },
+  {
+    "question": "How can I access Wi-Fi in Seoul?",
+    "answer": "Free Wi-Fi is widely available in cafes, subways, and public spaces. Visitors can also rent portable Wi-Fi routers or buy local SIM cards for constant connectivity."
+  },
+
+  {
+    "question": "What is the most convenient way to get around Tokyo?",
+    "answer": "Tokyo’s subway and train network is punctual and efficient. Travelers can purchase a Suica or Pasmo card for easy travel on most public transport lines."
+  },
+  {
+    "question": "Are there any etiquette rules I should know in Japan?",
+    "answer": "Yes, Japanese culture values politeness and respect. Always queue in public places, avoid talking on the phone inside trains, and bow slightly when greeting others."
+  },
+  {
+    "question": "Is English commonly spoken in Tokyo?",
+    "answer": "While English signage is common, not everyone speaks fluent English. Learning a few basic Japanese phrases or using translation apps can be very helpful."
+  },
+  {
+    "question": "Can I use credit cards in Tokyo?",
+    "answer": "Credit cards are accepted at major hotels and stores, but many small restaurants and shops prefer cash. It’s best to carry some yen for convenience."
+  },
+  {
+    "question": "When is cherry blossom season in Tokyo?",
+    "answer": "Cherry blossoms usually bloom between late March and early April. It’s one of the most popular times to visit Japan, so early reservations are recommended."
+  },
+
+  {
+    "question": "Do I need a visa to enter Thailand for tourism?",
+    "answer": "Many nationalities can enter Thailand visa-free for up to 30 days. Travelers staying longer must apply for a visa in advance or extend their stay at an immigration office."
+  },
+  {
+    "question": "What is the best way to get around Bangkok?",
+    "answer": "Bangkok offers multiple transport options including BTS Skytrain, MRT subway, and river ferries. Avoid rush hours if possible, as road traffic can be heavy."
+  },
+  {
+    "question": "Is street food in Bangkok safe to eat?",
+    "answer": "Bangkok’s street food is popular and generally safe if you choose stalls with high turnover and fresh ingredients. Drinking bottled water is recommended."
+  },
+  {
+    "question": "When is the ideal time to visit Bangkok?",
+    "answer": "The cool season from November to February offers the most pleasant weather for sightseeing. March to May can be very hot, while June to October is the rainy season."
+  },
+  {
+    "question": "Are there any cultural norms tourists should follow in Thailand?",
+    "answer": "Always show respect to the monarchy and remove shoes before entering temples. Dress modestly when visiting religious sites and avoid touching anyone’s head."
+  },
+
+  {
+    "question": "What are the best transport options in Paris?",
+    "answer": "Paris has a well-connected metro and bus system that covers all major attractions. You can buy multi-day travel passes for unlimited rides within designated zones."
+  },
+  {
+    "question": "Is Paris safe for tourists?",
+    "answer": "Paris is generally safe, but pickpocketing can occur in crowded areas like metro stations and tourist spots. Keep valuables secure and be aware of your surroundings."
+  },
+  {
+    "question": "Do restaurants in Paris include service charges?",
+    "answer": "Yes, service charges are typically included in restaurant bills. Additional tipping is optional, though rounding up the bill is a common courtesy."
+  },
+  {
+    "question": "When is the best time to visit Paris?",
+    "answer": "Spring (April–June) and autumn (September–October) have pleasant weather and fewer crowds. Summer is lively but often crowded with tourists."
+  },
+  {
+    "question": "Are museums in Paris closed on certain days?",
+    "answer": "Most museums close one day a week, often on Monday or Tuesday. Always check official websites for updated opening hours before visiting."
+  },
+
+  {
+    "question": "Do I need a car to explore Los Angeles?",
+    "answer": "While public buses and metro lines exist, Los Angeles is best explored by car due to its vast layout. Visitors often rent vehicles for convenience and flexibility."
+  },
+  {
+    "question": "Is tap water safe to drink in Los Angeles?",
+    "answer": "Yes, LA’s tap water meets federal safety standards. However, many locals prefer filtered water for taste."
+  },
+  {
+    "question": "When is the best time to visit Los Angeles?",
+    "answer": "Spring and autumn offer comfortable temperatures and fewer crowds. Summers can be hot, especially inland, while winters are mild and pleasant."
+  },
+  {
+    "question": "Where should tourists stay in Los Angeles?",
+    "answer": "Popular areas include Santa Monica, Downtown LA, and Hollywood, depending on interests. Book accommodations near public transport to avoid long drives."
+  },
+  {
+    "question": "Are there any safety tips for visitors in Los Angeles?",
+    "answer": "LA is generally safe, but avoid isolated areas at night and keep valuables out of sight in parked cars. Follow local advisories for beach safety and traffic updates."
   }
 ]

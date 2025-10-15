@@ -10,6 +10,7 @@ __pycache__/
 .env
 .venv/
 travelbot_env/
+venv/
 
 # Data and model outputs
 # data/*.csv

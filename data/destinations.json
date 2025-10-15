@@ -1,0 +1,80 @@
+[
+  {
+    "city": "Singapore",
+    "transport": "Singapore’s MRT system is the fastest and most affordable way to travel between key attractions. Taxis and ride-hailing services like Grab are widely available for door-to-door convenience.",
+    "attractions": [
+      "Marina Bay Sands and Gardens by the Bay",
+      "Sentosa Island",
+      "Singapore Botanic Gardens (UNESCO World Heritage Site)"
+    ],
+    "tips": [
+      "Avoid rush hours between 7–9 a.m. and 6–8 p.m. when taking public transport.",
+      "Singapore is very clean and strict about littering—dispose of waste properly."
+    ]
+  },
+  {
+    "city": "Seoul",
+    "transport": "Seoul’s subway network covers the entire metropolitan area with English signage. Taxis are plentiful and reasonably priced for short trips.",
+    "attractions": [
+      "Gyeongbokgung Palace",
+      "Myeongdong Shopping Street",
+      "N Seoul Tower on Namsan Mountain"
+    ],
+    "tips": [
+      "Purchase a T-Money card for convenient transfers on buses and subways.",
+      "Public transport shuts down around midnight—plan evening travel ahead."
+    ]
+  },
+  {
+    "city": "Tokyo",
+    "transport": "Tokyo’s JR trains and subway lines are efficient and punctual. Suica and Pasmo prepaid cards can be used for trains, buses, and even convenience stores.",
+    "attractions": [
+      "Shibuya Crossing and Hachiko Statue",
+      "Tokyo Tower and Zojo-ji Temple",
+      "Asakusa and Senso-ji Temple"
+    ],
+    "tips": [
+      "Avoid using your phone for calls inside trains—it’s considered impolite.",
+      "Carry some cash; many small restaurants and shops remain cash-only."
+    ]
+  },
+  {
+    "city": "Bangkok",
+    "transport": "The BTS Skytrain and MRT subway are the most reliable ways to move through central Bangkok. River ferries offer scenic alternatives to avoid traffic congestion.",
+    "attractions": [
+      "The Grand Palace and Wat Phra Kaew",
+      "Wat Arun (Temple of Dawn)",
+      "Chatuchak Weekend Market"
+    ],
+    "tips": [
+      "Dress modestly when visiting temples—shoulders and knees should be covered.",
+      "Use official metered taxis or Grab to avoid overcharging."
+    ]
+  },
+  {
+    "city": "Paris",
+    "transport": "Paris’s Metro and RER trains connect all major districts and attractions. Walking and cycling are also pleasant options, especially in central arrondissements.",
+    "attractions": [
+      "Eiffel Tower",
+      "Louvre Museum",
+      "Notre-Dame Cathedral and the Latin Quarter"
+    ],
+    "tips": [
+      "Buy a carnet (bundle) of Metro tickets to save money on multiple rides.",
+      "Pickpocketing can occur in tourist areas—keep bags closed and valuables secure."
+    ]
+  },
+  {
+    "city": "Los Angeles",
+    "transport": "While Los Angeles has buses and metro lines, most visitors rent a car for flexibility. Rideshare services like Uber and Lyft are widely available across the city.",
+    "attractions": [
+      "Hollywood Walk of Fame",
+      "Santa Monica Pier and Beach",
+      "Griffith Observatory and Griffith Park"
+    ],
+    "tips": [
+      "Traffic is heaviest between 7–10 a.m. and 4–7 p.m.; plan around rush hours.",
+      "Parking fees vary widely—check signage carefully before leaving your car."
+    ]
+  }
+]
