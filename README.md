@@ -1,10 +1,10 @@
-# 🧳 Travel Assistant Chatbot (DSA4213 Project)
+# Travel Assistant Chatbot (DSA4213 Project)
 
 ## Overview
 This project builds a **lightweight, domain-specific chatbot** for answering travel FAQs and destination queries efficiently.  
 It demonstrates **Retrieval-Augmented Generation (RAG)** and **prompt-based learning** using small pretrained models (Flan-T5 small).
 
-### ✨ Key Features
+### Key Features
 - **Prompt-only baseline** using Flan-T5 Small.
 - **RAG-lite chatbot** with FAISS retrieval on a curated travel knowledge base.
 - **Evaluation** via semantic similarity (cosine) and human ratings.
@@ -12,7 +12,7 @@ It demonstrates **Retrieval-Augmented Generation (RAG)** and **prompt-based lear
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 | Folder | Description |
 |--------|--------------|
 | `data/` | JSON/CSV knowledge base, FAQs, and evaluation queries. |
@@ -23,9 +23,15 @@ It demonstrates **Retrieval-Augmented Generation (RAG)** and **prompt-based lear
 
 ---
 
-## ⚙️ Setup Instructions
-### 1. Create virtual environment
+## Setup Instructions and how to run the model
+### 1. Create a virtual environment
+### 2. Download the required packages from requirements.txt
+### 3. run the baseline model
 ```bash
-conda create -n travelbot python=3.10
-conda activate travelbot
+python3 src/baseline_flanT5.py
+```
+### 4. run the raglite chatbot
+```bash
+python3 src/retrieval_faiss.py
+python3 src/raglite_chatbot.py
 ```
