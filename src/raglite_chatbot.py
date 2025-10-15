@@ -1,43 +1,53 @@
+from sentence_transformers import SentenceTransformer
+import faiss
+import json
+import numpy as np
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from retrieval_faiss import TravelRetriever
 
-    from sentence_transformers import SentenceTransformer
-    import faiss, json, numpy as np
-    from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+# =========================
+# Load model + tokenizer
+# =========================
+model_name = "google/flan-t5-small"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
 
-    # Load model + tokenizer
-    model_name = "google/flan-t5-small"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+# =========================
+# Initialize retriever (FAQ + Destinations)
+# =========================
+retriever = TravelRetriever("data/faq_data.json", "data/destinations.json")
 
-    # Load retrieval encoder
-    retriever = SentenceTransformer('all-MiniLM-L6-v2')
+# =========================
+# RAG-Lite chatbot
+# =========================
+def rag_answer(query):
+    # Retrieve top contexts
+    contexts = retriever.retrieve(query, k=3)
 
-    # Load FAQ knowledge base
-    with open('data/faq_data.json') as f:
-        kb = json.load(f)
+    # Combine context + query into a single prompt
+    combined = (
+        "You are a travel assistant. Use the relevant info below to answer clearly.\n\n"
+        f"Question: {query}\n\n"
+        "Relevant Info:\n" + "\n".join(contexts)
+    )
 
-    corpus = [item['question'] + ' ' + item['answer'] for item in kb]
-    corpus_embeddings = retriever.encode(corpus)
+    print("\n[Retrieved Context]")
+    print("\n".join(contexts))
+    print("---------------")
 
-    # Create FAISS index
-    index = faiss.IndexFlatL2(corpus_embeddings.shape[1])
-    index.add(np.array(corpus_embeddings, dtype='float32'))
+    # Generate answer
+    inputs = tokenizer(combined, return_tensors="pt", truncation=True)
+    outputs = model.generate(**inputs, max_new_tokens=120)
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-    def retrieve_context(query, k=2):
-        q_emb = retriever.encode([query])
-        D, I = index.search(np.array(q_emb, dtype='float32'), k)
-        return [corpus[i] for i in I[0]]
 
-    def rag_answer(query):
-        contexts = retrieve_context(query)
-        combined = query + "
-
-Relevant Info:
-" + "
-".join(contexts)
-        inputs = tokenizer(combined, return_tensors='pt')
-        outputs = model.generate(**inputs, max_new_tokens=100)
-        return tokenizer.decode(outputs[0], skip_special_tokens=True)
-
-    if __name__ == '__main__':
-        q = input('Ask a travel question: ')
-        print('Answer:', rag_answer(q))
+# =========================
+# Run chatbot interactively
+# =========================
+if __name__ == "__main__":
+    while True:
+        q = input("Ask a travel question (or 'exit' to quit): ")
+        if q.lower() == "exit":
+            break
+        print("Answer:", rag_answer(q))
+        print()
