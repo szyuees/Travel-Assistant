@@ -20,8 +20,9 @@ The final system demonstrates:
 |--------|--------------|
 | `data/` | JSON/CSV knowledge base, FAQs, and evaluation queries. |
 | `src/` | All source code — model scripts, retrieval functions, and evaluation tools. |
+| `lora_travel_t5` | LoRA fine-tuning model. |
 | `reports/` | Project documentation and final report. |
-| `docs/` | Diagrams and presentation slides. |
+
 
 ---
 
