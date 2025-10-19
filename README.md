@@ -4,7 +4,7 @@
 This project implements a **lightweight Retrieval-Augmented Generation (RAG)** chatbot designed to answer **travel-related FAQs** such as visa requirements, transport, attractions, and travel tips.  
 It uses **Flan-T5 Small** as a base model for natural-language generation and combines it with a **FAISS semantic retriever** built from a curated knowledge base.  
 
-To improve domain specificity without full fine-tuning, we apply **LoRA (Low-Rank Adaptation)** — a parameter-efficient fine-tuning (PEFT) method that updates only a small subset of model weights.  
+To improve domain specificity without full fine-tuning, we apply **LoRA (Low-Rank Adaptation)**, a parameter-efficient fine-tuning (PEFT) method that updates only a small subset of model weights.  
 
 The final system demonstrates:
 -  *Prompt-only baseline model*  
