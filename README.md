@@ -55,14 +55,6 @@ Automatically detects and loads LoRA weights (lora_travel_t5/) if available.
 ```bash
 python3 src/raglite_chatbot.py
 ```
-Example:
-Ask a travel question: What should I visit in Paris?
-
-[Retrieved Context]
-Paris. Transport: Paris’s Metro and RER trains...
-Attractions: Eiffel Tower, Louvre Museum, Notre-Dame Cathedral...
----------------
-Answer: You can visit famous landmarks such as the Eiffel Tower, the Louvre Museum, and Notre-Dame Cathedral in Paris.
 
 ### c) LoRA Fine-Tuning (Run in Google Colab)
 This uses data/lora_train.csv (10–15 Q-A pairs).
