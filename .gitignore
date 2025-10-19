@@ -21,7 +21,6 @@ venv/
 # Reports and documents
 *.pdf
 *.docx
-*.pptx
 *.ipynb
 
 # IDE and notebook settings
