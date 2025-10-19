@@ -27,3 +27,6 @@ venv/
 # IDE and notebook settings
 .vscode/
 .idea/
+
+#models
+lora_travel_t5/adapter_model.safetensors
