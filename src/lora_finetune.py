@@ -54,4 +54,4 @@ trainer = Trainer(model=model, args=args, train_dataset=tokenized["train"], eval
 trainer.train()
 
 model.save_pretrained("lora_travel_t5")
-print("✅ LoRA fine-tuning complete!")
+print("LoRA fine-tuning complete!")

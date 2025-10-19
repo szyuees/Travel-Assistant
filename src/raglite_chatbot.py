@@ -11,9 +11,8 @@ from peft import PeftModel
 from retrieval_faiss import TravelRetriever
 
 
-# =========================
+
 # Load model + tokenizer
-# =========================
 BASE_MODEL = "google/flan-t5-small"
 LORA_DIR = "lora_travel_t5"
 
@@ -28,16 +27,14 @@ if os.path.exists(LORA_DIR) and os.path.exists(os.path.join(LORA_DIR, "adapter_m
     print(f"✅ LoRA adapter detected in '{LORA_DIR}' — loading fine-tuned weights...")
     model = PeftModel.from_pretrained(model, LORA_DIR)
 else:
-    print("⚠️ No LoRA adapter found. Using base model only.")
+    print("No LoRA adapter found. Using base model only.")
 
-# =========================
+
 # Initialize retriever
-# =========================
 retriever = TravelRetriever("data/faq_data.json", "data/destinations.json")
 
-# =========================
+
 # RAG-Lite chatbot
-# =========================
 def rag_answer(query):
     # Retrieve top-k relevant contexts
     contexts = retriever.retrieve_city_focused(query, k=3)
@@ -60,9 +57,8 @@ def rag_answer(query):
     return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
 
-# =========================
+
 # Interactive loop
-# =========================
 if __name__ == "__main__":
     print("🧭 Travel Assistant Chatbot (RAG-Lite + LoRA Ready)")
     print("Type 'exit' to quit.\n")

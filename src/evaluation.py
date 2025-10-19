@@ -11,15 +11,13 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 from peft import PeftModel
 from retrieval_faiss import TravelRetriever
 
-# ======================================================
+
 # 1. Load evaluation data
-# ======================================================
 df = pd.read_csv("data/evaluation_queries.csv")
 
-# ======================================================
+
 # 2. Load models
-# ======================================================
-print("🔹 Loading models...")
+print("Loading models...")
 
 BASE_MODEL = "google/flan-t5-small"
 LORA_DIR = "lora_travel_t5"
@@ -38,9 +36,7 @@ else:
 retriever = TravelRetriever("data/faq_data.json", "data/destinations.json")
 encoder = SentenceTransformer("all-MiniLM-L6-v2")
 
-# ======================================================
 # 3. Helper functions
-# ======================================================
 def gen_base_answer(query):
     inputs = tokenizer(query, return_tensors="pt")
     outputs = model_base.generate(**inputs, max_new_tokens=80)
@@ -70,10 +66,7 @@ def similarity(a, b):
     ea, eb = encoder.encode(a, convert_to_tensor=True), encoder.encode(b, convert_to_tensor=True)
     return float(util.cos_sim(ea, eb))
 
-
-# ======================================================
 # 4. Evaluate all models
-# ======================================================
 results = []
 print("🔹 Running evaluation (Baseline, RAG, LoRA)...")
 
@@ -96,7 +89,7 @@ for i, row in df.iterrows():
 df_out = pd.DataFrame(results)
 df_out.to_csv("reports/evaluation_lora_results.csv", index=False)
 
-print("✅ Evaluation complete.")
+print("Evaluation complete.")
 print(df_out[["Query", "Sim_Baseline", "Sim_RAG", "Sim_LoRA"]].head())
 
 print("\nAverage similarity:")

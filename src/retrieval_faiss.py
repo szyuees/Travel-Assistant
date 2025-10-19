@@ -22,14 +22,14 @@ class TravelRetriever:
         print("🔹 Initializing TravelRetriever...")
         self.retriever = SentenceTransformer(model_name)
 
-        # ============= Load FAQ Data =============
+        # Load FAQ Data 
         with open(faq_path) as f:
             faq_data = json.load(f)
         faq_entries = [
             item["question"] + " " + item["answer"] for item in faq_data
         ]
 
-        # ============= Load Destination Data =============
+        # Load Destination Data 
         with open(dest_path) as f:
             dest_data = json.load(f)
         dest_entries = []
@@ -46,7 +46,7 @@ class TravelRetriever:
         self.corpus = faq_entries + dest_entries
         self.embeddings = self.retriever.encode(self.corpus)
 
-        # ============= Build FAISS index =============
+        # Build FAISS index 
         self.index = faiss.IndexFlatL2(self.embeddings.shape[1])
         self.index.add(np.array(self.embeddings, dtype="float32"))
 
