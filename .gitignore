@@ -3,8 +3,9 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Jupyter
+# Colab and system
 .ipynb_checkpoints/
+.DS_Store
 
 # Virtual environment
 .env
@@ -12,17 +13,16 @@ __pycache__/
 travelbot_env/
 venv/
 
-# Data and model outputs
-# data/*.csv
-# data/*.json
+
 
 # OS files
 .DS_Store
 
 # Reports and documents
-# *.pdf
-# *.docx
-# *.pptx
+*.pdf
+*.docx
+*.pptx
+*.ipynb
 
 # IDE and notebook settings
 .vscode/
