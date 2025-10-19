@@ -1,13 +1,14 @@
 """
 evaluation.py
 --------------
-Compare baseline Flan-T5 vs RAG-Lite chatbot
+Compare Baseline, RAG-Lite, and LoRA-tuned models
 using semantic similarity on evaluation_queries.csv.
 """
 
 import pandas as pd
 from sentence_transformers import SentenceTransformer, util
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from peft import PeftModel
 from retrieval_faiss import TravelRetriever
 
 # ======================================================
@@ -20,90 +21,83 @@ df = pd.read_csv("data/evaluation_queries.csv")
 # ======================================================
 print("🔹 Loading models...")
 
-# Baseline model (prompt-only)
-base_name = "google/flan-t5-small"
-tokenizer_base = AutoTokenizer.from_pretrained(base_name)
-model_base = AutoModelForSeq2SeqLM.from_pretrained(base_name)
+BASE_MODEL = "google/flan-t5-small"
+LORA_DIR = "lora_travel_t5"
 
-# RAG-Lite model
-tokenizer_rag = tokenizer_base
+tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
+model_base = AutoModelForSeq2SeqLM.from_pretrained(BASE_MODEL)
 model_rag = model_base
+
+# Load LoRA adapter if available
+if True:  # set to False if you want to skip LoRA
+    model_lora = AutoModelForSeq2SeqLM.from_pretrained(BASE_MODEL)
+    model_lora = PeftModel.from_pretrained(model_lora, LORA_DIR)
+else:
+    model_lora = None
+
 retriever = TravelRetriever("data/faq_data.json", "data/destinations.json")
-
-# Semantic similarity encoder
 encoder = SentenceTransformer("all-MiniLM-L6-v2")
-
 
 # ======================================================
 # 3. Helper functions
 # ======================================================
-def generate_baseline_answer(query):
-    """Simple prompt-only generation."""
-    inputs = tokenizer_base(query, return_tensors="pt")
+def gen_base_answer(query):
+    inputs = tokenizer(query, return_tensors="pt")
     outputs = model_base.generate(**inputs, max_new_tokens=80)
-    return tokenizer_base.decode(outputs[0], skip_special_tokens=True)
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-
-def generate_rag_answer(query):
-    """Retrieval-augmented generation."""
+def gen_rag_answer(query):
     contexts = retriever.retrieve_city_focused(query, k=3)
     combined = (
-        "You are a helpful travel assistant. Read the context and answer clearly in 2–3 sentences.\n\n"
+        "You are a helpful travel assistant. Read the context and answer in 2–3 sentences.\n\n"
         f"Question: {query}\n\nContext:\n" + "\n".join(contexts)
     )
-    inputs = tokenizer_rag(combined, return_tensors="pt", truncation=True)
+    inputs = tokenizer(combined, return_tensors="pt", truncation=True)
     outputs = model_rag.generate(**inputs, max_new_tokens=120)
-    return tokenizer_rag.decode(outputs[0], skip_special_tokens=True)
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
+def gen_lora_answer(query):
+    contexts = retriever.retrieve_city_focused(query, k=3)
+    combined = (
+        "You are a travel assistant fine-tuned on travel FAQs. Answer concisely using the context below.\n\n"
+        f"Question: {query}\n\nContext:\n" + "\n".join(contexts)
+    )
+    inputs = tokenizer(combined, return_tensors="pt", truncation=True)
+    outputs = model_lora.generate(**inputs, max_new_tokens=120)
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
 
-def semantic_similarity(a, b):
-    """Compute cosine similarity between two strings."""
-    emb_a = encoder.encode(a, convert_to_tensor=True)
-    emb_b = encoder.encode(b, convert_to_tensor=True)
-    return float(util.cos_sim(emb_a, emb_b))
+def similarity(a, b):
+    ea, eb = encoder.encode(a, convert_to_tensor=True), encoder.encode(b, convert_to_tensor=True)
+    return float(util.cos_sim(ea, eb))
 
 
 # ======================================================
-# 4. Run evaluation
+# 4. Evaluate all models
 # ======================================================
 results = []
-print("🔹 Running evaluation... (this may take a few minutes)")
+print("🔹 Running evaluation (Baseline, RAG, LoRA)...")
 
 for i, row in df.iterrows():
-    query = row["query"]
-    reference = row["expected_answer"]
-
-    base_ans = generate_baseline_answer(query)
-    rag_ans = generate_rag_answer(query)
-
-    sim_base = semantic_similarity(base_ans, reference)
-    sim_rag = semantic_similarity(rag_ans, reference)
+    q, ref = row["query"], row["expected_answer"]
+    base = gen_base_answer(q)
+    rag = gen_rag_answer(q)
+    lora = gen_lora_answer(q)
 
     results.append({
-        "Query": query,
-        "Reference": reference,
-        "Baseline_Answer": base_ans,
-        "RAG_Answer": rag_ans,
-        "Sim_Baseline": round(sim_base, 3),
-        "Sim_RAG": round(sim_rag, 3)
+        "Query": q,
+        "Baseline": base,
+        "RAG": rag,
+        "LoRA": lora,
+        "Sim_Baseline": similarity(base, ref),
+        "Sim_RAG": similarity(rag, ref),
+        "Sim_LoRA": similarity(lora, ref)
     })
 
-results_df = pd.DataFrame(results)
-results_df.to_csv("reports/evaluation_results.csv", index=False)
+df_out = pd.DataFrame(results)
+df_out.to_csv("reports/evaluation_lora_results.csv", index=False)
 
-# ======================================================
-# 5. Print summary
-# ======================================================
-mean_base = results_df["Sim_Baseline"].mean()
-mean_rag = results_df["Sim_RAG"].mean()
+print("✅ Evaluation complete.")
+print(df_out[["Query", "Sim_Baseline", "Sim_RAG", "Sim_LoRA"]].head())
 
-print("\n✅ Evaluation complete!")
-print(results_df[["Query", "Sim_Baseline", "Sim_RAG"]])
 print("\nAverage similarity:")
-print(f" - Baseline : {mean_base:.3f}")
-print(f" - RAG-Lite : {mean_rag:.3f}")
-
-if mean_rag > mean_base:
-    print("\n🎯 RAG-Lite shows improvement in factual grounding and relevance.")
-else:
-    print("\n⚠️ RAG-Lite did not outperform baseline; review retrieval or prompt design.")
+print(df_out[["Sim_Baseline", "Sim_RAG", "Sim_LoRA"]].mean())
