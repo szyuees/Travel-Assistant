@@ -47,8 +47,18 @@ class TravelRetriever:
         self.embeddings = self.retriever.encode(self.corpus)
 
         # Build FAISS index 
-        self.index = faiss.IndexFlatL2(self.embeddings.shape[1])
-        self.index.add(np.array(self.embeddings, dtype="float32"))
+        
+        # Convert embeddings to numpy if needed
+        import numpy as np
+        emb = np.array(self.embeddings, dtype="float32")
+        # L2-normalize rows to unit vectors for cosine similarity
+        norms = np.linalg.norm(emb, axis=1, keepdims=True)
+        emb = emb / (norms + 1e-12)
+        self.embeddings = emb.astype("float32")
+
+        # Use inner product on normalized vectors (equivalent to cosine similarity)
+        self.index = faiss.IndexFlatIP(self.embeddings.shape[1])
+        self.index.add(self.embeddings)
 
         # List of supported cities (for detection)
         self.cities = [
