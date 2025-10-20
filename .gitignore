@@ -5,7 +5,7 @@ src/__pycache__/
 
 # Colab and system
 .ipynb_checkpoints/
-.DS_Store
+#.DS_Store
 
 # Virtual environment
 .env
@@ -17,7 +17,7 @@ tcvenv/
 
 
 # OS files
-.DS_Store
+#.DS_Store
 
 # Reports and documents
 *.pdf
@@ -29,4 +29,9 @@ tcvenv/
 .idea/
 
 #models
-lora_travel_t5/adapter_model.safetensors
+#lora_travel_t5/adapter_model.safetensors
+
+#other versions of src files 
+src/retrieval_faiss_v1.py
+src/lora_finetune_v1.py
+src/raglite_chatbot_v1.py
