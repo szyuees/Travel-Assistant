@@ -18,11 +18,32 @@ model_name = "google/flan-t5-small"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
 
+candidate_substrings = ["q", "k", "v", "q_proj", "v_proj", "qkv", "wi", "wo"]  # common candidates
+
+matched = set()
+for name, _ in model.named_modules():
+    lowered = name.lower()
+    for sub in candidate_substrings:
+        if sub in lowered:
+            matched.add(sub)
+
+if "q" in matched and "v" in matched:
+    target_modules = ["q", "v"]
+else:
+    # fallback: use the discovered substrings (keeps it conservative)
+    target_modules = list(matched)[:3]  # pick up to 3 substrings
+
+if len(target_modules) == 0:
+    raise ValueError(
+        "Unable to automatically determine target_modules for LoRA. "
+        "Please inspect model.named_modules() and set target_modules manually."
+    )
+
 # LoRA configuration
 config = LoraConfig(
     r=8,
     lora_alpha=16,
-    target_modules=["q", "v"],  # query/value projections
+    target_modules=target_modules,  # query/value projections
     lora_dropout=0.05,
     bias="none",
     task_type="SEQ_2_SEQ_LM",
@@ -60,7 +81,6 @@ trainer = Trainer(
     eval_dataset=tokenized["test"],
     data_collator=data_collator,
 )
-
 
 trainer.train()
 
