@@ -50,7 +50,18 @@ args = TrainingArguments(
     logging_steps=10,
     save_strategy="no"
 )
-trainer = Trainer(model=model, args=args, train_dataset=tokenized["train"], eval_dataset=tokenized["test"])
+from transformers import DataCollatorForSeq2Seq
+
+data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)
+trainer = Trainer(
+    model=model,
+    args=args,
+    train_dataset=tokenized["train"],
+    eval_dataset=tokenized["test"],
+    data_collator=data_collator,
+)
+
+
 trainer.train()
 
 model.save_pretrained("lora_travel_t5")
