@@ -12,6 +12,7 @@ __pycache__/
 .venv/
 travelbot_env/
 venv/
+tcvenv/
 
 
 
