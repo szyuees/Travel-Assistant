@@ -282,8 +282,15 @@ class TravelRetriever:
 
         # Sort by combined_score descending and return top-k
         candidates = sorted(candidates, key=lambda r: r["combined_score"], reverse=True)
+
+        # Ensure a consistent 'final_score' key exists (use combined_score as default)
+        for c in candidates:
+            if "final_score" not in c:
+                c["final_score"] = float(c.get("combined_score", c.get("score", 0.0)))
+
         # Keep a consistent return structure (full candidates but trimmed to k)
         return candidates[:k]
+
 
     # -------------------------
     # City-focused retrieval
