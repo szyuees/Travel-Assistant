@@ -1,5 +1,5 @@
 # Python cache
-__pycache__/
+src/__pycache__/
 *.pyc
 *.pyo
 
@@ -12,6 +12,7 @@ __pycache__/
 .venv/
 travelbot_env/
 venv/
+tcvenv/
 
 
 
@@ -29,3 +30,12 @@ venv/
 
 #models
 lora_travel_t5/adapter_model.safetensors
+
+#other versions of src files 
+src/retrieval_faiss_v1.py
+src/lora_finetune_v1.py
+src/raglite_chatbot_v1.py
+src/raglite_chatbot_v2.py
+
+#test files
+scripts/
