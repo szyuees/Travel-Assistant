@@ -16,7 +16,7 @@ Improvements vs original:
 import os
 import json
 from datetime import datetime
-from datasets import load_dataset
+from datasets import load_dataset, DatasetDict
 from transformers import (
     AutoModelForSeq2SeqLM,
     AutoTokenizer,
@@ -34,7 +34,8 @@ import numpy as np
 # -------------------
 MODEL_NAME = "google/flan-t5-small"
 LORA_OUTPUT_DIR = "lora_travel_t5"
-TRAIN_CSV = "data/lora_train.csv"
+TRAIN_JSON = "data/train_supervised.json"
+VAL_JSON   = "data/val_supervised.json"
 SEED = 42
 
 # Training hyperparams (sensible defaults)
@@ -63,8 +64,10 @@ set_seed(SEED)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load dataset
-dataset = load_dataset("csv", data_files={"train": TRAIN_CSV})["train"]
-dataset = dataset.train_test_split(test_size=0.1, seed=SEED)  # 90/10 split
+ds_train = load_dataset("json", data_files=TRAIN_JSON)["train"]
+ds_val   = load_dataset("json", data_files=VAL_JSON)["train"]
+
+dataset = DatasetDict({"train": ds_train, "test": ds_val})
 
 # Load model & tokenizer
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
@@ -120,24 +123,34 @@ model.print_trainable_parameters()  # nice summary: ensures only adapter params 
 # -------------------
 # Tokenize & preprocess
 # -------------------
-MAX_IN_LEN = 128
-MAX_OUT_LEN = 64
+MAX_IN_LEN = 512
+MAX_OUT_LEN = 160
 
 
 def preprocess(batch):
-    # expects columns: 'question' and 'answer'
-    inputs = [f"Question: {q}" for q in batch["question"]]
-    model_inputs = tokenizer(inputs, truncation=True, padding="max_length", max_length=MAX_IN_LEN)
-
-    labels = tokenizer(batch["answer"], truncation=True, padding="max_length", max_length=MAX_OUT_LEN)
+    # 期望字段：input（完整提示，含 Question/EVIDENCE），target（最终答案要点）
+    inputs = batch["input"]
+    model_inputs = tokenizer(
+        inputs,
+        truncation=True, padding="max_length", max_length=MAX_IN_LEN
+    )
+    labels = tokenizer(
+        batch["target"],
+        truncation=True, padding="max_length", max_length=MAX_OUT_LEN
+    )
     labels_ids = labels["input_ids"]
-    # replace pad token id's with -100 for loss ignoring
-    labels_ids = [[(tid if tid != tokenizer.pad_token_id else -100) for tid in l] for l in labels_ids]
+    labels_ids = [
+        [(tid if tid != tokenizer.pad_token_id else -100) for tid in l]
+        for l in labels_ids
+    ]
     model_inputs["labels"] = labels_ids
     return model_inputs
 
 
+
 tokenized = dataset.map(preprocess, batched=True, remove_columns=dataset["train"].column_names)
+tokenizer.model_max_length = 512
+
 
 # Data collator (will also pad dynamically)
 data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)

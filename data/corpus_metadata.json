@@ -1,0 +1,425 @@
+{
+  "embeddings_normalized": true,
+  "entries": [
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 0,
+      "text": "Do I need a visa to visit Singapore as a tourist? Citizens from most countries do not need a visa for short visits to Singapore. However, travelers from certain nations must apply in advance through the Singapore Immigration & Checkpoints Authority website.",
+      "orig": {
+        "question": "Do I need a visa to visit Singapore as a tourist?",
+        "answer": "Citizens from most countries do not need a visa for short visits to Singapore. However, travelers from certain nations must apply in advance through the Singapore Immigration & Checkpoints Authority website."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 1,
+      "text": "How can I get from Changi Airport to the city center? Changi Airport is connected to downtown Singapore by the MRT train system, which takes around 30 minutes. Taxis and airport shuttle services are also available 24 hours a day.",
+      "orig": {
+        "question": "How can I get from Changi Airport to the city center?",
+        "answer": "Changi Airport is connected to downtown Singapore by the MRT train system, which takes around 30 minutes. Taxis and airport shuttle services are also available 24 hours a day."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 2,
+      "text": "What is the best time to visit Singapore? Singapore has a tropical climate year-round, but February to April are generally the driest months. It’s best to carry light clothing and an umbrella as rain can occur anytime.",
+      "orig": {
+        "question": "What is the best time to visit Singapore?",
+        "answer": "Singapore has a tropical climate year-round, but February to April are generally the driest months. It’s best to carry light clothing and an umbrella as rain can occur anytime."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 3,
+      "text": "Are there any cultural customs I should observe in Singapore? Yes. Avoid eating or drinking on public transport and remove shoes before entering someone’s home or a temple. Politeness and cleanliness are highly valued.",
+      "orig": {
+        "question": "Are there any cultural customs I should observe in Singapore?",
+        "answer": "Yes. Avoid eating or drinking on public transport and remove shoes before entering someone’s home or a temple. Politeness and cleanliness are highly valued."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 4,
+      "text": "Is tap water safe to drink in Singapore? Yes, Singapore’s tap water meets World Health Organization standards. It is safe to drink straight from the tap without filtration.",
+      "orig": {
+        "question": "Is tap water safe to drink in Singapore?",
+        "answer": "Yes, Singapore’s tap water meets World Health Organization standards. It is safe to drink straight from the tap without filtration."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 5,
+      "text": "What is the best way to travel around Seoul? Seoul’s public transport system is extensive, with a reliable subway and bus network. T-Money cards can be used for seamless transfers between different modes of transport.",
+      "orig": {
+        "question": "What is the best way to travel around Seoul?",
+        "answer": "Seoul’s public transport system is extensive, with a reliable subway and bus network. T-Money cards can be used for seamless transfers between different modes of transport."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 6,
+      "text": "Are credit cards widely accepted in Seoul? Credit cards are accepted at most hotels, restaurants, and stores. However, it’s advisable to carry some cash for small shops and traditional markets.",
+      "orig": {
+        "question": "Are credit cards widely accepted in Seoul?",
+        "answer": "Credit cards are accepted at most hotels, restaurants, and stores. However, it’s advisable to carry some cash for small shops and traditional markets."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 7,
+      "text": "Do I need to tip in South Korea? Tipping is not customary in South Korea, and service charges are usually included in bills. A polite thank-you is sufficient in most situations.",
+      "orig": {
+        "question": "Do I need to tip in South Korea?",
+        "answer": "Tipping is not customary in South Korea, and service charges are usually included in bills. A polite thank-you is sufficient in most situations."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 8,
+      "text": "When is the best season to visit Seoul? Spring (April–June) and autumn (September–November) offer mild weather and colorful scenery. Winters can be very cold, while summers are hot and humid.",
+      "orig": {
+        "question": "When is the best season to visit Seoul?",
+        "answer": "Spring (April–June) and autumn (September–November) offer mild weather and colorful scenery. Winters can be very cold, while summers are hot and humid."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 9,
+      "text": "How can I access Wi-Fi in Seoul? Free Wi-Fi is widely available in cafes, subways, and public spaces. Visitors can also rent portable Wi-Fi routers or buy local SIM cards for constant connectivity.",
+      "orig": {
+        "question": "How can I access Wi-Fi in Seoul?",
+        "answer": "Free Wi-Fi is widely available in cafes, subways, and public spaces. Visitors can also rent portable Wi-Fi routers or buy local SIM cards for constant connectivity."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 10,
+      "text": "What is the most convenient way to get around Tokyo? Tokyo’s subway and train network is punctual and efficient. Travelers can purchase a Suica or Pasmo card for easy travel on most public transport lines.",
+      "orig": {
+        "question": "What is the most convenient way to get around Tokyo?",
+        "answer": "Tokyo’s subway and train network is punctual and efficient. Travelers can purchase a Suica or Pasmo card for easy travel on most public transport lines."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 11,
+      "text": "Are there any etiquette rules I should know in Japan? Yes, Japanese culture values politeness and respect. Always queue in public places, avoid talking on the phone inside trains, and bow slightly when greeting others.",
+      "orig": {
+        "question": "Are there any etiquette rules I should know in Japan?",
+        "answer": "Yes, Japanese culture values politeness and respect. Always queue in public places, avoid talking on the phone inside trains, and bow slightly when greeting others."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 12,
+      "text": "Is English commonly spoken in Tokyo? While English signage is common, not everyone speaks fluent English. Learning a few basic Japanese phrases or using translation apps can be very helpful.",
+      "orig": {
+        "question": "Is English commonly spoken in Tokyo?",
+        "answer": "While English signage is common, not everyone speaks fluent English. Learning a few basic Japanese phrases or using translation apps can be very helpful."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 13,
+      "text": "Can I use credit cards in Tokyo? Credit cards are accepted at major hotels and stores, but many small restaurants and shops prefer cash. It’s best to carry some yen for convenience.",
+      "orig": {
+        "question": "Can I use credit cards in Tokyo?",
+        "answer": "Credit cards are accepted at major hotels and stores, but many small restaurants and shops prefer cash. It’s best to carry some yen for convenience."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 14,
+      "text": "When is cherry blossom season in Tokyo? Cherry blossoms usually bloom between late March and early April. It’s one of the most popular times to visit Japan, so early reservations are recommended.",
+      "orig": {
+        "question": "When is cherry blossom season in Tokyo?",
+        "answer": "Cherry blossoms usually bloom between late March and early April. It’s one of the most popular times to visit Japan, so early reservations are recommended."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 15,
+      "text": "Do I need a visa to enter Thailand for tourism? Many nationalities can enter Thailand visa-free for up to 30 days. Travelers staying longer must apply for a visa in advance or extend their stay at an immigration office.",
+      "orig": {
+        "question": "Do I need a visa to enter Thailand for tourism?",
+        "answer": "Many nationalities can enter Thailand visa-free for up to 30 days. Travelers staying longer must apply for a visa in advance or extend their stay at an immigration office."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 16,
+      "text": "What is the best way to get around Bangkok? Bangkok offers multiple transport options including BTS Skytrain, MRT subway, and river ferries. Avoid rush hours if possible, as road traffic can be heavy.",
+      "orig": {
+        "question": "What is the best way to get around Bangkok?",
+        "answer": "Bangkok offers multiple transport options including BTS Skytrain, MRT subway, and river ferries. Avoid rush hours if possible, as road traffic can be heavy."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 17,
+      "text": "Is street food in Bangkok safe to eat? Bangkok’s street food is popular and generally safe if you choose stalls with high turnover and fresh ingredients. Drinking bottled water is recommended.",
+      "orig": {
+        "question": "Is street food in Bangkok safe to eat?",
+        "answer": "Bangkok’s street food is popular and generally safe if you choose stalls with high turnover and fresh ingredients. Drinking bottled water is recommended."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 18,
+      "text": "When is the ideal time to visit Bangkok? The cool season from November to February offers the most pleasant weather for sightseeing. March to May can be very hot, while June to October is the rainy season.",
+      "orig": {
+        "question": "When is the ideal time to visit Bangkok?",
+        "answer": "The cool season from November to February offers the most pleasant weather for sightseeing. March to May can be very hot, while June to October is the rainy season."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 19,
+      "text": "Are there any cultural norms tourists should follow in Thailand? Always show respect to the monarchy and remove shoes before entering temples. Dress modestly when visiting religious sites and avoid touching anyone’s head.",
+      "orig": {
+        "question": "Are there any cultural norms tourists should follow in Thailand?",
+        "answer": "Always show respect to the monarchy and remove shoes before entering temples. Dress modestly when visiting religious sites and avoid touching anyone’s head."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 20,
+      "text": "What are the best transport options in Paris? Paris has a well-connected metro and bus system that covers all major attractions. You can buy multi-day travel passes for unlimited rides within designated zones.",
+      "orig": {
+        "question": "What are the best transport options in Paris?",
+        "answer": "Paris has a well-connected metro and bus system that covers all major attractions. You can buy multi-day travel passes for unlimited rides within designated zones."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 21,
+      "text": "Is Paris safe for tourists? Paris is generally safe, but pickpocketing can occur in crowded areas like metro stations and tourist spots. Keep valuables secure and be aware of your surroundings.",
+      "orig": {
+        "question": "Is Paris safe for tourists?",
+        "answer": "Paris is generally safe, but pickpocketing can occur in crowded areas like metro stations and tourist spots. Keep valuables secure and be aware of your surroundings."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 22,
+      "text": "Do restaurants in Paris include service charges? Yes, service charges are typically included in restaurant bills. Additional tipping is optional, though rounding up the bill is a common courtesy.",
+      "orig": {
+        "question": "Do restaurants in Paris include service charges?",
+        "answer": "Yes, service charges are typically included in restaurant bills. Additional tipping is optional, though rounding up the bill is a common courtesy."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 23,
+      "text": "When is the best time to visit Paris? Spring (April–June) and autumn (September–October) have pleasant weather and fewer crowds. Summer is lively but often crowded with tourists.",
+      "orig": {
+        "question": "When is the best time to visit Paris?",
+        "answer": "Spring (April–June) and autumn (September–October) have pleasant weather and fewer crowds. Summer is lively but often crowded with tourists."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 24,
+      "text": "Are museums in Paris closed on certain days? Most museums close one day a week, often on Monday or Tuesday. Always check official websites for updated opening hours before visiting.",
+      "orig": {
+        "question": "Are museums in Paris closed on certain days?",
+        "answer": "Most museums close one day a week, often on Monday or Tuesday. Always check official websites for updated opening hours before visiting."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 25,
+      "text": "Do I need a car to explore Los Angeles? While public buses and metro lines exist, Los Angeles is best explored by car due to its vast layout. Visitors often rent vehicles for convenience and flexibility.",
+      "orig": {
+        "question": "Do I need a car to explore Los Angeles?",
+        "answer": "While public buses and metro lines exist, Los Angeles is best explored by car due to its vast layout. Visitors often rent vehicles for convenience and flexibility."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 26,
+      "text": "Is tap water safe to drink in Los Angeles? Yes, LA’s tap water meets federal safety standards. However, many locals prefer filtered water for taste.",
+      "orig": {
+        "question": "Is tap water safe to drink in Los Angeles?",
+        "answer": "Yes, LA’s tap water meets federal safety standards. However, many locals prefer filtered water for taste."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 27,
+      "text": "When is the best time to visit Los Angeles? Spring and autumn offer comfortable temperatures and fewer crowds. Summers can be hot, especially inland, while winters are mild and pleasant.",
+      "orig": {
+        "question": "When is the best time to visit Los Angeles?",
+        "answer": "Spring and autumn offer comfortable temperatures and fewer crowds. Summers can be hot, especially inland, while winters are mild and pleasant."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 28,
+      "text": "Where should tourists stay in Los Angeles? Popular areas include Santa Monica, Downtown LA, and Hollywood, depending on interests. Book accommodations near public transport to avoid long drives.",
+      "orig": {
+        "question": "Where should tourists stay in Los Angeles?",
+        "answer": "Popular areas include Santa Monica, Downtown LA, and Hollywood, depending on interests. Book accommodations near public transport to avoid long drives."
+      }
+    },
+    {
+      "source": "faq",
+      "source_file": "data/faq_data.json",
+      "id": 29,
+      "text": "Are there any safety tips for visitors in Los Angeles? LA is generally safe, but avoid isolated areas at night and keep valuables out of sight in parked cars. Follow local advisories for beach safety and traffic updates.",
+      "orig": {
+        "question": "Are there any safety tips for visitors in Los Angeles?",
+        "answer": "LA is generally safe, but avoid isolated areas at night and keep valuables out of sight in parked cars. Follow local advisories for beach safety and traffic updates."
+      }
+    },
+    {
+      "source": "destination",
+      "source_file": "data/destinations.json",
+      "id": 0,
+      "city": "Singapore",
+      "text": "Singapore. Transport: Singapore’s MRT system is the fastest and most affordable way to travel between key attractions. Taxis and ride-hailing services like Grab are widely available for door-to-door convenience.. Attractions: Marina Bay Sands and Gardens by the Bay, Sentosa Island, Singapore Botanic Gardens (UNESCO World Heritage Site). Tips: Avoid rush hours between 7–9 a.m. and 6–8 p.m. when taking public transport., Singapore is very clean and strict about littering—dispose of waste properly.",
+      "orig": {
+        "city": "Singapore",
+        "transport": "Singapore’s MRT system is the fastest and most affordable way to travel between key attractions. Taxis and ride-hailing services like Grab are widely available for door-to-door convenience.",
+        "attractions": [
+          "Marina Bay Sands and Gardens by the Bay",
+          "Sentosa Island",
+          "Singapore Botanic Gardens (UNESCO World Heritage Site)"
+        ],
+        "tips": [
+          "Avoid rush hours between 7–9 a.m. and 6–8 p.m. when taking public transport.",
+          "Singapore is very clean and strict about littering—dispose of waste properly."
+        ]
+      }
+    },
+    {
+      "source": "destination",
+      "source_file": "data/destinations.json",
+      "id": 1,
+      "city": "Seoul",
+      "text": "Seoul. Transport: Seoul’s subway network covers the entire metropolitan area with English signage. Taxis are plentiful and reasonably priced for short trips.. Attractions: Gyeongbokgung Palace, Myeongdong Shopping Street, N Seoul Tower on Namsan Mountain. Tips: Purchase a T-Money card for convenient transfers on buses and subways., Public transport shuts down around midnight—plan evening travel ahead.",
+      "orig": {
+        "city": "Seoul",
+        "transport": "Seoul’s subway network covers the entire metropolitan area with English signage. Taxis are plentiful and reasonably priced for short trips.",
+        "attractions": [
+          "Gyeongbokgung Palace",
+          "Myeongdong Shopping Street",
+          "N Seoul Tower on Namsan Mountain"
+        ],
+        "tips": [
+          "Purchase a T-Money card for convenient transfers on buses and subways.",
+          "Public transport shuts down around midnight—plan evening travel ahead."
+        ]
+      }
+    },
+    {
+      "source": "destination",
+      "source_file": "data/destinations.json",
+      "id": 2,
+      "city": "Tokyo",
+      "text": "Tokyo. Transport: Tokyo’s JR trains and subway lines are efficient and punctual. Suica and Pasmo prepaid cards can be used for trains, buses, and even convenience stores.. Attractions: Shibuya Crossing and Hachiko Statue, Tokyo Tower and Zojo-ji Temple, Asakusa and Senso-ji Temple. Tips: Avoid using your phone for calls inside trains—it’s considered impolite., Carry some cash; many small restaurants and shops remain cash-only.",
+      "orig": {
+        "city": "Tokyo",
+        "transport": "Tokyo’s JR trains and subway lines are efficient and punctual. Suica and Pasmo prepaid cards can be used for trains, buses, and even convenience stores.",
+        "attractions": [
+          "Shibuya Crossing and Hachiko Statue",
+          "Tokyo Tower and Zojo-ji Temple",
+          "Asakusa and Senso-ji Temple"
+        ],
+        "tips": [
+          "Avoid using your phone for calls inside trains—it’s considered impolite.",
+          "Carry some cash; many small restaurants and shops remain cash-only."
+        ]
+      }
+    },
+    {
+      "source": "destination",
+      "source_file": "data/destinations.json",
+      "id": 3,
+      "city": "Bangkok",
+      "text": "Bangkok. Transport: The BTS Skytrain and MRT subway are the most reliable ways to move through central Bangkok. River ferries offer scenic alternatives to avoid traffic congestion.. Attractions: The Grand Palace and Wat Phra Kaew, Wat Arun (Temple of Dawn), Chatuchak Weekend Market. Tips: Dress modestly when visiting temples—shoulders and knees should be covered., Use official metered taxis or Grab to avoid overcharging.",
+      "orig": {
+        "city": "Bangkok",
+        "transport": "The BTS Skytrain and MRT subway are the most reliable ways to move through central Bangkok. River ferries offer scenic alternatives to avoid traffic congestion.",
+        "attractions": [
+          "The Grand Palace and Wat Phra Kaew",
+          "Wat Arun (Temple of Dawn)",
+          "Chatuchak Weekend Market"
+        ],
+        "tips": [
+          "Dress modestly when visiting temples—shoulders and knees should be covered.",
+          "Use official metered taxis or Grab to avoid overcharging."
+        ]
+      }
+    },
+    {
+      "source": "destination",
+      "source_file": "data/destinations.json",
+      "id": 4,
+      "city": "Paris",
+      "text": "Paris. Transport: Paris’s Metro and RER trains connect all major districts and attractions. Walking and cycling are also pleasant options, especially in central arrondissements.. Attractions: Eiffel Tower, Louvre Museum, Notre-Dame Cathedral and the Latin Quarter. Tips: Buy a carnet (bundle) of Metro tickets to save money on multiple rides., Pickpocketing can occur in tourist areas—keep bags closed and valuables secure.",
+      "orig": {
+        "city": "Paris",
+        "transport": "Paris’s Metro and RER trains connect all major districts and attractions. Walking and cycling are also pleasant options, especially in central arrondissements.",
+        "attractions": [
+          "Eiffel Tower",
+          "Louvre Museum",
+          "Notre-Dame Cathedral and the Latin Quarter"
+        ],
+        "tips": [
+          "Buy a carnet (bundle) of Metro tickets to save money on multiple rides.",
+          "Pickpocketing can occur in tourist areas—keep bags closed and valuables secure."
+        ]
+      }
+    },
+    {
+      "source": "destination",
+      "source_file": "data/destinations.json",
+      "id": 5,
+      "city": "Los Angeles",
+      "text": "Los Angeles. Transport: While Los Angeles has buses and metro lines, most visitors rent a car for flexibility. Rideshare services like Uber and Lyft are widely available across the city.. Attractions: Hollywood Walk of Fame, Santa Monica Pier and Beach, Griffith Observatory and Griffith Park. Tips: Traffic is heaviest between 7–10 a.m. and 4–7 p.m.; plan around rush hours., Parking fees vary widely—check signage carefully before leaving your car.",
+      "orig": {
+        "city": "Los Angeles",
+        "transport": "While Los Angeles has buses and metro lines, most visitors rent a car for flexibility. Rideshare services like Uber and Lyft are widely available across the city.",
+        "attractions": [
+          "Hollywood Walk of Fame",
+          "Santa Monica Pier and Beach",
+          "Griffith Observatory and Griffith Park"
+        ],
+        "tips": [
+          "Traffic is heaviest between 7–10 a.m. and 4–7 p.m.; plan around rush hours.",
+          "Parking fees vary widely—check signage carefully before leaving your car."
+        ]
+      }
+    }
+  ]
+}
