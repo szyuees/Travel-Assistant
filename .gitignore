@@ -28,4 +28,12 @@ venv/
 .idea/
 
 #models
-lora_travel_t5/adapter_model.safetensors
+lora_travel_t5/adapter_model.safetensors/data/raw/
+/data/interim/
+/data/processed/*.jsonl
+/data/processed/*.faiss
+/data/processed/*.index
+__pycache__/
+.venv
+.env
+.ipynb_checkpoints/
