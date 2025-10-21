@@ -7,3 +7,8 @@ numpy
 scikit-learn
 tqdm
 jupyter
+mwparserfromhell
+lxml
+unidecode
+pandas
+rank-bm25
