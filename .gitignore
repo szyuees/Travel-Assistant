@@ -38,3 +38,6 @@ __pycache__/
 .env
 .ipynb_checkpoints/
 !/data/processed/sample_*.jsonl
+
+# ignore big data
+/data/
