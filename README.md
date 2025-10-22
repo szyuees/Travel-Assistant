@@ -74,5 +74,4 @@ All generated results are saved to reports/.
 | `evaluation_llama3.2_baseline.csv` | Model only QA results.|
 | `evaluation_llama3.2_RAG.csv` | RAG Top-k (k=3) results |
 | `evaluation_llama3.2_RAG_reranked.csv` | RAG with reranking results |
-| `reports/` | The notebook to run this project entirely. |
 
