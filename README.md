@@ -14,6 +14,7 @@ We further benchmark *Baseline*, *RAG (Top-k)*, and *Reranked RAG* variants and 
 ### Important Note !!
 The Python scripts in src/ are designed for evaluation and experimentation (not as interactive chatbots).
 For ease of reproduction, please use the notebook notebooks/testing_llama3.2.ipynb, which runs all experiments sequentially and generates the evaluation results under reports/.
+The model used *Llama-3.2-3B-Instruct* is a gated model, which requires user's application via its official website on Hugging Face. Please ensure you have access to the model before you run the notebook. The official website: https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct
 
 
 ---
