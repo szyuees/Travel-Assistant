@@ -22,7 +22,7 @@ We further benchmark *Baseline*, *RAG (Top-k)*, and *Reranked RAG* variants and 
 | `data/` | JSONL knowledge base, FAQs, and evaluation queries. But the dataset was too large, so we removed it here. |
 | `src/` | All source code to evaluate models perfomance. |
 | `reports/` | Project documentation and final report. |
-| `reports/` | The notebook to run this project entirely. |
+| `notebooks/` | The notebook to run this project entirely. |
 
 
 ---
