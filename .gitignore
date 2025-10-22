@@ -21,7 +21,7 @@ venv/
 # Reports and documents
 *.pdf
 *.docx
-*.ipynb
+
 
 # IDE and notebook settings
 .vscode/
