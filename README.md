@@ -11,7 +11,9 @@ A WikiVoyage knowledge base (≈200K chunks)
 
 We further benchmark *Baseline*, *RAG (Top-k)*, and *Reranked RAG* variants and evaluate performance using semantic similarity metrics.
 
-
+### Important Note !!
+The Python scripts in src/ are designed for evaluation and experimentation (not as interactive chatbots).
+For ease of reproduction, please use the notebook notebooks/testing_llama3.2.ipynb, which runs all experiments sequentially and generates the evaluation results under reports/.
 
 
 ---
