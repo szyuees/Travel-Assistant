@@ -1,27 +1,28 @@
 # Travel Assistant Chatbot (DSA4213 Project)
 
 ## Overview
-This project implements a **lightweight Retrieval-Augmented Generation (RAG)** chatbot designed to answer **travel-related FAQs** such as visa requirements, transport, attractions, and travel tips.  
-It uses **Flan-T5 Small** as a base model for natural-language generation and combines it with a **FAISS semantic retriever** built from a curated knowledge base.  
+This project implements a Retrieval-Augmented Generation (RAG)–based Travel Assistant Chatbot that can answer travel-related questions (e.g., transport, attractions, travel tips) using a lightweight open-source setup.
 
-To improve domain specificity without full fine-tuning, we apply **LoRA (Low-Rank Adaptation)**, a parameter-efficient fine-tuning (PEFT) method that updates only a small subset of model weights.  
+The chatbot integrates:
+Llama-3.2-3B-Instruct as the generation backbone
+BGE-Large-v1.5 as the semantic retriever
+FAISS for efficient similarity search
+A WikiVoyage knowledge base (≈200K chunks)
 
-The final system demonstrates:
--  *Prompt-only baseline model*  
--  *Retrieval-Augmented Generation (RAG-Lite) pipeline*  
--  *LoRA fine-tuned version for domain adaptation*  
--  *Automatic evaluation using semantic similarity*  
--  *Error analysis on low-performing outputs*
+We further benchmark *Baseline*, *RAG (Top-k)*, and *Reranked RAG* variants and evaluate performance using semantic similarity metrics.
+
+
+
 
 ---
 
 ## Project Structure
 | Folder | Description |
 |--------|--------------|
-| `data/` | JSON/CSV knowledge base, FAQs, and evaluation queries. |
-| `src/` | All source code — model scripts, retrieval functions, and evaluation tools. |
-| `lora_travel_t5` | LoRA fine-tuning model. |
+| `data/` | JSONL knowledge base, FAQs, and evaluation queries. But the dataset was too large, so we removed it here. |
+| `src/` | All source code to evaluate models perfomance. |
 | `reports/` | Project documentation and final report. |
+| `reports/` | The notebook to run this project entirely. |
 
 
 ---
@@ -44,52 +45,32 @@ venv\Scripts\activate          # Windows
 pip install -r requirements.txt
 ```
 
-## Run the Chatbot
-### a) Baseline (prompt-only)
-Generates answers directly from Flan-T5 Small with no retrieval context.
-```bash
-python3 src/baseline_flanT5.py
-```
-### b) Retrieval-Augmented Chatbot (RAG-Lite)
-Uses FAISS retrieval from both faq_data.json and destinations.json.
-Automatically detects and loads LoRA weights (lora_travel_t5/) if available.
-```bash
-python3 src/raglite_chatbot.py
-```
+## How to run
+### a) open the notebook
+Open notebooks/testing_llama3.2.ipynb in Google Colab or VS Code Jupyter.
 
-### c) LoRA Fine-Tuning (Run in Google Colab)
-This uses data/lora_train.csv (10–15 Q-A pairs).
-Output will be saved in /lora_travel_t5/.
-To re-use locally, the chatbot automatically loads this folder.
-```bash
-python3 src/lora_finetune.py
-```
+### b) Set Runtime
+Change your runtime to GPU
 
-## Evaluation
-### Automatic Evaluation
-```bash
-python3 src/evaluation.py
-```
-Compares:
-	•	Baseline (Flan-T5 Small)
-	•	RAG-Lite (Flan-T5 Small)
-	•	RAG-Lite + LoRA (Fine-tuned)
+### c) Run Sequentially
+Run the notebook top to bottom — it includes:
+1.	Environment setup & imports
+2.	Load model + retriever
+3.	Build FAISS index
+4.	Run Baseline
+5.	Run RAG (Top-k)
+6.	Run RAG (Reranked)
+7.	Generate evaluation reports
+8.	Visualize results
 
-Example Output:
-Average similarity:
-Sim_Baseline    0.63
-Sim_RAG         0.84
-Sim_LoRA        0.88
-🎯 RAG-Lite with LoRA shows the highest factual accuracy.
+All generated results are saved to reports/.
 
-### Error Analysis
-We manually examined 10 lowest-similarity outputs.
-Common failure types:
-	•	Retrieval mismatch – retrieved wrong topic or city.
-	•	Model underfitting – short or generic replies (“Paris”).
-	•	Data sparsity – too small dataset with limited scope
 
-## Contributors
-• Deng Haoyun
-• See Sze Yui
-• Li Xiaoyue
+## Output Files
+| File| Description |
+|--------|--------------|
+| `evaluation_llama3.2_baseline.csv` | Model only QA results.|
+| `evaluation_llama3.2_RAG.csv` | RAG Top-k (k=3) results |
+| `evaluation_llama3.2_RAG_reranked.csv` | RAG with reranking results |
+| `reports/` | The notebook to run this project entirely. |
+
