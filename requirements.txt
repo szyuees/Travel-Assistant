@@ -1,18 +1,24 @@
-# Core frameworks
+
+# Core ML frameworks
 torch>=2.1.0
 transformers>=4.43.0
 accelerate>=0.33.0
 bitsandbytes>=0.43.0
+
+# Retrieval and embeddings
 sentence-transformers>=2.6.1
 faiss-cpu>=1.8.0
 
-# Supporting utilities
-huggingface-hub>=0.22.0
+# Data utilities and visualization
 pandas>=2.1.0
 numpy>=1.25.0
 matplotlib>=3.8.0
 tqdm>=4.66.0
 scipy>=1.11.0
 
-# Optional (for LoRA fine-tuning)
+# Model hub and fine-tuning support
+huggingface-hub>=0.22.0
 peft>=0.10.0
+
+# Web interface (interactive demo)
+gradio>=4.39.0
