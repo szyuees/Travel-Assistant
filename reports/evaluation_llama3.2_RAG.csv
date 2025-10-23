@@ -1,3 +1,4 @@
+evaluation_llama3.2_RAG
 query,answer,similarity
 What is the baggage allowance for Singapore Airlines?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
@@ -29,7 +30,7 @@ If you have health issues, consult your doctor and ensure the airline knows abou
 Question: What is the baggage allowance for Singapore Airlines?
 Answer: Unfortunately, I am unable to provide information on baggage allowance for Singapore Airlines. 
 
-However, the article does suggest that when choosing a case or bag for travel, consider its empty weight, dimensions, ease of carry, and apparent durability.  If you are looking for a reliable airline, consider the safety record of the airline, the aircraft it uses, and airport reputations.  If you are looking for a reliable airline, consider the safety record of the airline, the aircraft it uses, and airport reputations.  You may also want to research the airline you are flying with and look for flight segments you've been offered under a code-sharing arrangement.  If you have health issues, consult your doctor and ensure the airline knows about any condition that might be problematic for flying well before the start of the trip.",0.6358261704444885
+However, the article does suggest that when choosing a case or bag for travel, consider its empty weight, dimensions, ease of carry, and apparent durability.  If you are looking for a reliable airline, consider the safety record of the airline, the aircraft it uses, and airport reputations.  If you are looking for a reliable airline, consider the safety record of the airline, the aircraft it uses, and airport reputations.  You may also want to research the airline you are flying with and look for flight segments you've been offered under a code-sharing arrangement.  If you have health issues, consult your doctor and ensure the airline knows about any condition that might be problematic for flying well before the start of the trip.",0.6358261704444890
 How can I get from Changi Airport to the city center?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
 Context:
@@ -75,7 +76,7 @@ However, I'll provide more information that may be relevant to the question.
 
 Changi Airport is a common airport for locals due to its better connections. The downside is that you will have to pass through customs and immigration twice. Fares are often cheaper than Melbourne Airport due to the airport's smaller size. It is about 20 minutes by road to the Geelong city centre along the Princes Freeway, with the Avalon City Express providing a shuttle bus service to Geelong and South Geelong railway stations and meets every Jetstar flight. 
 
-Melbourne Airport is the state's international airport with services to various destinations across the country and the world. By road, the trip is about 1 hour and 15 minutes to Geelong along the Western Ring Road and then the Princes Freeway. Gull Airport Service operates pre-booked shuttle buses between Melbourne Airport and Geelong's city centre every day. Alternatively, you",0.7994242310523987
+Melbourne Airport is the state's international airport with services to various destinations across the country and the world. By road, the trip is about 1 hour and 15 minutes to Geelong along the Western Ring Road and then the Princes Freeway. Gull Airport Service operates pre-booked shuttle buses between Melbourne Airport and Geelong's city centre every day. Alternatively, you",0.7994242310523990
 Is tap water safe to drink in Tokyo?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
 Context:
@@ -112,7 +113,7 @@ Drink
 Coffee (kapi) and tea (chaya): unlike other parts of South India, in Kerala tea is more popular than coffee. It's virtually impossible not to find a stall selling tea. The famous tea of Kerala is the Kannan Devan brand. In Kerala one can find Milma (a milk brand) booths selling tea with milk and snack eateries. Coffee is more popular in urban areas. Popular national brands like Cafe Coffee Day and many local cafes offer various flavours of coffees with western/oriental snacks. Kerala's own traditional cafe is Indian Coffee House, which are old-fashioned pre-1970s styled coffee shops that offer Kerala coffee along with regular Kerala foods. From the new generation of cafe
 
 Question: Is tap water safe to drink in Tokyo?
-Answer: No, tap water is not safe to drink in Tokyo. The locals do not drink the tap water in Tokyo, and you should not drink water directly from the tap either. In Tokyo, you may want to consider buying mineral water or tender coconut water. If you prefer to drink coffee or tea, you can find these options at shops and stalls throughout the city. However, it's always best to consult with a local or a healthcare professional for the most up-to-date information on safe drinking water options in Tokyo.",0.6959730386734009
+Answer: No, tap water is not safe to drink in Tokyo. The locals do not drink the tap water in Tokyo, and you should not drink water directly from the tap either. In Tokyo, you may want to consider buying mineral water or tender coconut water. If you prefer to drink coffee or tea, you can find these options at shops and stalls throughout the city. However, it's always best to consult with a local or a healthcare professional for the most up-to-date information on safe drinking water options in Tokyo.",0.6959730386734010
 When is the best time to visit Seoul?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
 Context:
@@ -136,7 +137,7 @@ When traveling into Seoul with a lot of luggage or heading to southern parts of 
 Question: When is the best time to visit Seoul?
 Answer: There is no best time to visit Seoul. The city has a humid continental climate with four distinct seasons. Seoul experiences relatively mild winters and hot, humid summers. It is a good idea to visit during the spring (March to May) or autumn (September to November) if you prefer milder weather and smaller crowds. However, Seoul is a great destination any time of the year.
 
-Note: There is no information provided about the best time to visit Seoul in the context. However, based on general knowledge, I provided a factual answer. If you need more information, please provide additional context.",0.5118394494056702
+Note: There is no information provided about the best time to visit Seoul in the context. However, based on general knowledge, I provided a factual answer. If you need more information, please provide additional context.",0.5118394494056700
 What is the best way to get around Bangkok?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
 Context:
@@ -196,7 +197,7 @@ For longer distances, using the BTS (Skytrain) or MRT (Subway) can be a convenie
 
 If you prefer to travel by air, there are domestic flights available from Bangkok. However, these may not be the most cost-effective option, depending on the route and time of year.
 
-Overall, the best way to get around Bangkok depends on your specific",0.7495293617248535
+Overall, the best way to get around Bangkok depends on your specific",0.7495293617248540
 Do I need a visa to enter Thailand for tourism?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
 Context:
@@ -252,7 +253,7 @@ Note: The question is a general one that requires a factual answer. The answer p
 
 Here is the correct answer to the question:
 
-No, you do not need a visa to enter Thailand for tourism. As a Thai national, you are eligible for a free short-term visa on arrival. However, for foreigners, the requirements may vary depending on the nationality and type of travel. It's recommended to check with the Thai embassy or consulate before your trip to determine the specific requirements for your nationality and travel plans.",0.6593441367149353
+No, you do not need a visa to enter Thailand for tourism. As a Thai national, you are eligible for a free short-term visa on arrival. However, for foreigners, the requirements may vary depending on the nationality and type of travel. It's recommended to check with the Thai embassy or consulate before your trip to determine the specific requirements for your nationality and travel plans.",0.6593441367149350
 What are the best transport options in Paris?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
 Context:
@@ -295,7 +296,7 @@ Note: The text does mention TGV trains from Dijon to Paris CDG airport, but that
 
 Let me know if you'd like me to answer any further questions! 
 
-Would you like me to answer another question? Go ahead and ask!",0.7058843374252319
+Would you like me to answer another question? Go ahead and ask!",0.7058843374252320
 When is the best time to visit Paris?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
 Context:
@@ -320,7 +321,7 @@ Walking in Paris is one of the great pleasures of visiting the City of Light. It
 The smartest travellers take advantage of the walk-ability of this city, and stay above ground as much as possible. A metro ride of less than 2 stops is probably best avoided since walking will take about the same amount of time and you'll be able to see more of the city. That said, pay attention to the Metro stations that you may pass by on your journey; the Metro network is very dense within the city and the lines are virtually always located directly underneath major boulevards, so if you become lost it is easy to regain your bearings by 
 
 Question: When is the best time to visit Paris?
-Answer: The best time to visit Paris is outside of the French school holidays. The school holidays occur in July (first Friday) and September (first Monday), as well as in late October, early November, Christmas, Easter, and between May Day and Victory Day. It is recommended to plan ahead and avoid these dates if possible, as they can result in busier roads, more expensive plane and train fares, and higher room rates.",0.6555699110031128
+Answer: The best time to visit Paris is outside of the French school holidays. The school holidays occur in July (first Friday) and September (first Monday), as well as in late October, early November, Christmas, Easter, and between May Day and Victory Day. It is recommended to plan ahead and avoid these dates if possible, as they can result in busier roads, more expensive plane and train fares, and higher room rates.",0.6555699110031130
 Do I need a car to explore Los Angeles?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
 Context:
@@ -356,7 +357,7 @@ right|300px|thumb|Getty Center courtyard
 One of two locations of the J. Paul Getty Museum, the Getty Center i
 
 Question: Do I need a car to explore Los Angeles?
-Answer: No, you do not need a car to explore Los Angeles. LA has a comprehensive public transportation system, including buses, light rail, and commuter rail, which can take you to many of the city's popular destinations. Additionally, many neighborhoods are walkable, and you can also use ride-sharing services or taxis if needed. While there are some areas that may be more difficult to access without a car, LA's public transportation system is generally sufficient to get around the city.",0.7124531269073486
+Answer: No, you do not need a car to explore Los Angeles. LA has a comprehensive public transportation system, including buses, light rail, and commuter rail, which can take you to many of the city's popular destinations. Additionally, many neighborhoods are walkable, and you can also use ride-sharing services or taxis if needed. While there are some areas that may be more difficult to access without a car, LA's public transportation system is generally sufficient to get around the city.",0.7124531269073490
 Are there any safety tips for tourists in Los Angeles?,"You are a helpful travel assistant. Use the information below to answer factually and concisely.
 
 Context:
@@ -384,4 +385,4 @@ The place you're going to is closed, why don't you take my tour? (Taxi drivers m
 During politically-calm times, you can walk around the main streets anytime you feel like roaming. It is fairly safe and you will always find lots of people around smiling and offering to help. Women alone can expect to be the target of an excessive amount of catcalling, but it rarely goes beyond that. Around the more touristy locations there is an abundance of 'helpful' people, but be car
 
 Question: Are there any safety tips for tourists in Los Angeles?
-Answer: There are no safety tips for tourists in Los Angeles. The text does not mention Los Angeles. The text is actually about the safety tips for tourists in a city that is not named in the text. The city is likely a popular tourist destination, such as Miami or another major city in the United States.",0.7570148706436157
+Answer: There are no safety tips for tourists in Los Angeles. The text does not mention Los Angeles. The text is actually about the safety tips for tourists in a city that is not named in the text. The city is likely a popular tourist destination, such as Miami or another major city in the United States.",0.7570148706436160
