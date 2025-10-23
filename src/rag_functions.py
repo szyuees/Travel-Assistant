@@ -3,7 +3,7 @@
 # Core retrieval + generation logic for RAG
 # ==========================================
 
-import json, numpy as np, faiss
+import json, numpy as np, faiss, os
 from sentence_transformers import SentenceTransformer
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
@@ -23,11 +23,6 @@ def load_faiss_index(
     data_path="data/wikivoyage_chunks.jsonl",
     sample_size=10_000
 ):
-    """
-    Loads a saved FAISS index and corresponding corpus.
-    If not found, rebuilds using WikiVoyage data.
-    """
-    import os
     retriever = load_retriever()
 
     if os.path.exists(index_path) and os.path.exists(corpus_path):
@@ -80,3 +75,10 @@ def rag_answer(query, retriever, index, corpus, generator, top_k=3):
     )
     result = generator(prompt, max_new_tokens=150, temperature=0.6, top_p=0.9)[0]["generated_text"]
     return result.strip(), contexts
+
+# ==========================================
+# 5. Global initialization (so imports work)
+# ==========================================
+print("🔹 Initializing retriever, index, and corpus...")
+retriever, index, corpus = load_faiss_index()
+print("✅ rag_functions.py ready.")
