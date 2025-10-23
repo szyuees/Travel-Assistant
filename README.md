@@ -107,6 +107,7 @@ The Gradio interface provides a simple textbox to ask travel questions and see t
 python3 src/gradio_app.py
 ```
 *Tips:First query loads models (~1–2 min), subsequent responses are instant (2–4 s).*
+![alt text](interactive_page.jpeg)
 
 ## Developer Notes
 Heavy components (model, retriever, FAISS index) are cached globally to reduce latency.
