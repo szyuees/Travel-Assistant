@@ -5,7 +5,8 @@
 
 import json, numpy as np, faiss, os
 from sentence_transformers import SentenceTransformer
-from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from typing import List, Tuple
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig, pipeline
 
 # ==========================================
 # 1. Load retriever (BGE-large)
@@ -46,16 +47,43 @@ def load_faiss_index(
     return retriever, index, corpus
 
 # ==========================================
-# 3. Load Llama-3.2 generator
+# 3. Load Gemma-2-2B-IT generator
 # ==========================================
 def load_generator():
-    print("🔹 Loading Llama-3.2 model...")
-    model_name = "meta-llama/Llama-3.2-3b-instruct"
-    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=True)
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name, device_map="auto", torch_dtype="auto", use_auth_token=True
+    def load_generator():
+    print("🔹 Loading Gemma-2-2B-IT...")
+    model_name = "google/gemma-2-2b-it"
+
+    # 可选：4bit 量化（显存不紧可删除 bnb_config 与 quantization_config）
+    bnb_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype="float16",
     )
-    return pipeline("text-generation", model=model, tokenizer=tokenizer)
+
+    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=True)
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        device_map="auto",
+        torch_dtype="auto",
+        quantization_config=bnb_config,   # 不用量化就删掉这行
+        use_auth_token=True,
+    )
+
+    generator = pipeline(
+        "text-generation",
+        model=model,
+        tokenizer=tokenizer,
+        max_new_tokens=200,          # 可按需调整
+        temperature=0.6,
+        top_p=0.9,
+        pad_token_id=tokenizer.pad_token_id,
+        eos_token_id=tokenizer.eos_token_id,
+    )
+    return generator, tokenizer
 
 # ==========================================
 # 4. Core RAG functions
@@ -65,16 +93,98 @@ def retrieve_context(query, retriever, index, corpus, top_k=3):
     D, I = index.search(np.array(q_emb, dtype="float32"), k=top_k)
     return [corpus[i] for i in I[0]]
 
-def rag_answer(query, retriever, index, corpus, generator, top_k=3):
-    contexts = retrieve_context(query, retriever, index, corpus, top_k)
-    context_text = "\n".join(contexts)
-    prompt = (
-        f"You are a helpful travel assistant. "
-        f"Use the information below to answer concisely and factually.\n\n"
-        f"Context:\n{context_text}\n\nQuestion: {query}\nAnswer:"
+def _pack_context(passages: List[str], max_passages: int = 8) -> str:
+    """
+    Turn a list of passages into a numbered block:
+    [1] passage text...
+    [2] passage text...
+    """
+    lines = []
+    for i, p in enumerate(passages[:max_passages], start=1):
+        lines.append(f"[{i}] {p.strip()}")
+    return "\n\n".join(lines)
+
+def _count_tokens(tokenizer, text: str) -> int:
+    return len(tokenizer(text, add_special_tokens=False)["input_ids"])
+
+def _truncate_to_budget(tokenizer, text: str, budget_tokens: int) -> str:
+    """
+    Truncate the text to fit within a token budget using a binary search on characters.
+    Keeps things simple and fast while avoiding context overflows.
+    """
+    if _count_tokens(tokenizer, text) <= budget_tokens:
+        return text
+    lo, hi = 0, len(text)
+    while lo < hi:
+        mid = (lo + hi) // 2
+        if _count_tokens(tokenizer, text[:mid]) <= budget_tokens:
+            lo = mid + 1
+        else:
+            hi = mid
+    return text[:lo-1]
+
+# ---------- Main RAG answering function ----------
+
+def rag_answer(
+    query: str,
+    retriever,             # SentenceTransformer (or compatible)
+    index,                 # FAISS index
+    corpus: List[str],     # passages aligned with FAISS ids
+    generator,             # HF pipeline("text-generation")
+    tokenizer,             # matching tokenizer for Gemma
+    top_k: int = 3,
+    max_new_tokens: int = 200,
+    temperature: float = 0.6,
+    top_p: float = 0.9,
+) -> Tuple[str, List[str]]:
+    # 1) Retrieve
+    q_emb = retriever.encode([query], convert_to_numpy=True)  # add normalize_embeddings=True if your index was built normalized
+    D, I = index.search(np.array(q_emb, dtype="float32"), k=top_k)
+    contexts = [corpus[i] for i in I[0]]
+
+    # 2) Build a numbered context block
+    context_text = _pack_context(contexts, max_passages=top_k)
+
+    # 3) Input-length budgeting (prevents truncation/overflow)
+    #    Try to read model max length; default to 8192 if missing.
+    try:
+        max_ctx_len = generator.model.config.max_position_embeddings
+    except Exception:
+        max_ctx_len = 8192
+    input_budget = max(256, max_ctx_len - max_new_tokens - 50)  # keep a small safety buffer
+
+    ctx_budget = int(input_budget * 0.8)   # 80% for context
+    qry_budget = input_budget - ctx_budget # 20% for the user query
+
+    context_text = _truncate_to_budget(tokenizer, context_text, ctx_budget)
+    safe_query = _truncate_to_budget(tokenizer, query, qry_budget)
+
+    # 4) System + User via chat template
+    system_prompt = (
+        "You are a helpful travel assistant. "
+        "Answer ONLY using the provided context. "
+        "Cite sources inline like [1], [2] based on the passage indices. "
+        "If the answer is not in the context, reply 'I am not sure' briefly."
     )
-    result = generator(prompt, max_new_tokens=150, temperature=0.6, top_p=0.9)[0]["generated_text"]
-    return result.strip(), contexts
+    messages = [
+        {"role": "system", "content": f"{system_prompt}\n\n---\nCONTEXT:\n{context_text}\n---"},
+        {"role": "user",   "content": safe_query},
+    ]
+    templated = tokenizer.apply_chat_template(
+        messages, tokenize=False, add_generation_prompt=True
+    )
+
+    # 5) Generate and strip the prompt prefix from pipeline output
+    out = generator(
+        templated,
+        max_new_tokens=max_new_tokens,
+        temperature=temperature,
+        top_p=top_p,
+        eos_token_id=tokenizer.eos_token_id,
+        pad_token_id=tokenizer.pad_token_id,
+    )[0]["generated_text"]
+    answer = out[len(templated):].strip()
+    return answer, contexts
 
 # ==========================================
 # 5. Global initialization (so imports work)

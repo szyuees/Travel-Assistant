@@ -1,13 +1,14 @@
 
 # Core ML frameworks
 torch>=2.1.0
-transformers>=4.43.0
+transformers>=4.45.0
 accelerate>=0.33.0
 bitsandbytes>=0.43.0
 
 # Retrieval and embeddings
-sentence-transformers>=2.6.1
-faiss-cpu>=1.8.0
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+bitsandbytes>=0.43.1 
 
 # Data utilities and visualization
 pandas>=2.1.0
@@ -17,7 +18,7 @@ tqdm>=4.66.0
 scipy>=1.11.0
 
 # Model hub and fine-tuning support
-huggingface-hub>=0.22.0
+huggingface-hub>=0.24.0
 peft>=0.10.0
 
 # Web interface (interactive demo)

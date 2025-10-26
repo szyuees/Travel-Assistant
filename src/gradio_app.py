@@ -3,38 +3,25 @@
 # Interactive demo for Travel Assistant Chatbot (RAG-Lite)
 # ==========================================
 
+# src/gradio_app.py
 import gradio as gr
-from rag_functions import load_retriever, load_faiss_index, load_generator, rag_answer
+from rag_functions import load_faiss_index, load_generator, rag_answer
 
-# ==========================================
-# Load models once (cached globally)
-# ==========================================
-print("🔹 Initializing components for Gradio app...")
 retriever, index, corpus = load_faiss_index()
-generator = load_generator()
+generator, tokenizer = load_generator()
 
-# ==========================================
-# Chat logic
-# ==========================================
-def chat_response(query):
-    answer, contexts = rag_answer(query, retriever, index, corpus, generator, top_k=3)
-    context_preview = "\n\n---\n\n".join(contexts[:2])
-    return f"**Answer:** {answer}\n\n**Top Retrieved Contexts:**\n{context_preview}"
+def chat_response(query: str):
+    ans, ctx = rag_answer(query, retriever, index, corpus, generator, tokenizer, top_k=3)
+    preview = "\n\n---\n\n".join(ctx[:2])
+    return f"**Answer**\n{ans}\n\n**Top Contexts**\n{preview}"
 
-# ==========================================
-# Gradio Interface
-# ==========================================
 iface = gr.Interface(
     fn=chat_response,
-    inputs=gr.Textbox(
-        label="Ask a travel question:",
-        placeholder="e.g. How do I get from Changi Airport to Marina Bay Sands?",
-    ),
+    inputs=gr.Textbox(label="Ask a travel question", placeholder="e.g., 3-day Singapore food itinerary?"),
     outputs=gr.Markdown(label="Response"),
-    title="🌍 Travel Assistant Chatbot (RAG-Lite)",
-    description="Ask any travel-related question. This chatbot uses WikiVoyage data and Llama-3.2-3B-Instruct for factual travel answers.",
-    theme="soft",
+    title="Travel Assistant (Gemma-2-2B-IT, RAG-Lite)",
+    description="Retrieval-augmented answers using Gemma-2-2B-IT with chat templates.",
 )
 
 if __name__ == "__main__":
-    iface.launch(share=True)
+    iface.launch(share=False)
