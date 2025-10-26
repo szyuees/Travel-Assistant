@@ -50,8 +50,7 @@ def load_faiss_index(
 # 3. Load Gemma-2-2B-IT generator
 # ==========================================
 def load_generator():
-    def load_generator():
-    print("🔹 Loading Gemma-2-2B-IT...")
+    
     model_name = "google/gemma-2-2b-it"
 
     # 可选：4bit 量化（显存不紧可删除 bnb_config 与 quantization_config）
