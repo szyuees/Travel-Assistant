@@ -19,8 +19,8 @@ def load_retriever():
 # 2. Load FAISS index (prebuilt or rebuild if missing)
 # ==========================================
 def load_faiss_index(
-    index_path="data/faiss_index.bin",
-    corpus_path="data/corpus_sample.json",
+    index_path="data/faiss.bin",
+    corpus_path="data/corpus.json",
     data_path="data/wikivoyage_chunks.jsonl",
     sample_size=10_000
 ):
