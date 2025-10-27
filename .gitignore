@@ -27,3 +27,8 @@ venv/
 .vscode/
 .idea/
 
+.venv/
+venv/
+ragenv/
+.ragenv/
+ENV/
