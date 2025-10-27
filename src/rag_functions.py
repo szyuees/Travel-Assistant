@@ -158,20 +158,36 @@ def rag_answer(
     context_text = _truncate_to_budget(tokenizer, context_text, ctx_budget)
     safe_query = _truncate_to_budget(tokenizer, query, qry_budget)
 
-    # 4) System + User via chat template
+    # 4) Build a single user message (Gemma does NOT support role="system")
     system_prompt = (
         "You are a helpful travel assistant. "
         "Answer ONLY using the provided context. "
         "Cite sources inline like [1], [2] based on the passage indices. "
         "If the answer is not in the context, reply 'I am not sure' briefly."
     )
-    messages = [
-        {"role": "system", "content": f"{system_prompt}\n\n---\nCONTEXT:\n{context_text}\n---"},
-        {"role": "user",   "content": safe_query},
-    ]
-    templated = tokenizer.apply_chat_template(
-        messages, tokenize=False, add_generation_prompt=True
+
+    full_user_prompt = (
+        system_prompt
+        + "\n\n---\nCONTEXT:\n"
+        + context_text
+        + "\n---\n\nQUESTION:\n"
+        + safe_query
+        + "\n\nFINAL ANSWER (with citations):"
     )
+
+    messages = [
+        {
+            "role": "user",
+            "content": full_user_prompt
+        }
+    ]
+
+    templated = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True
+    )
+
 
     # 5) Generate and strip the prompt prefix from pipeline output
     out = generator(
