@@ -40,12 +40,11 @@ def evaluate_baseline(
 
     def generate_answer(user_prompt: str) -> str:
         messages = [
-            {"role": "system", "content": "You are a helpful travel assistant."},
-            {"role": "user",   "content": user_prompt},
+        {"role": "user", "content": f"You are a helpful travel/study assistant.\n\n{user_prompt}"}
         ]
-        templated = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-        out = generator(templated)[0]["generated_text"]
-        return out[len(templated):].strip()
+        templ = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+        out = generator(templ)[0]["generated_text"]
+        return out[len(templ):].strip()
 
     df["generated_answer"] = df["query"].apply(generate_answer)
 
