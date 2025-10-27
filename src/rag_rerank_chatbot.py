@@ -118,34 +118,56 @@ def answer_with_gemma(
 ) -> str:
     """
     Build a chat-formatted prompt for Gemma and generate the final answer.
+    Gemma 不接受 role="system"，所以我们把系统指令、context、用户问题全部拼进单一的 user message。
     """
+
+    # 1. 
     context_block = pack_context(contexts, max_passages=8)
 
-    # Read model context length; default conservatively if absent.
+    # 2. avoid exceed context window
     try:
         max_ctx = generator.model.config.max_position_embeddings
     except Exception:
-        max_ctx = 8192
+        max_ctx = 8192  
 
-    # Reserve some budget for generation and a small safety buffer.
     input_budget = max(256, max_ctx - max_new_tokens - 50)
-    ctx_budget = int(input_budget * 0.8)
-    qry_budget = input_budget - ctx_budget
+    ctx_budget  = int(input_budget * 0.8)   
+    qry_budget  = input_budget - ctx_budget 
 
     context_block = truncate_to_budget(tokenizer, context_block, ctx_budget)
-    safe_query = truncate_to_budget(tokenizer, query, qry_budget)
+    safe_query    = truncate_to_budget(tokenizer, query,        qry_budget)
 
-    system_prompt = (
-        "You are a travel assistant. Use ONLY the provided context to answer. "
+    # 3. 
+    system_instruction = (
+        "You are a travel assistant. Use ONLY the provided passages to answer. "
         "Cite sources inline like [1], [2] based on the passage indices. "
-        "If the answer is not in the context, reply 'I am not sure' briefly."
+        "If the answer is not in the passages, reply 'I am not sure' briefly."
     )
-    messages = [
-        {"role": "system", "content": f"{system_prompt}\n\n---\nCONTEXT:\n{context_block}\n---"},
-        {"role": "user", "content": safe_query},
-    ]
-    templated = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
 
+    full_user_prompt = (
+        system_instruction
+        + "\n\n---\nPASSAGES:\n"
+        + context_block
+        + "\n---\n\nQUESTION:\n"
+        + safe_query
+        + "\n\nFINAL ANSWER (with citations):"
+    )
+
+    # 4. 
+    messages = [
+        {
+            "role": "user",
+            "content": full_user_prompt
+        }
+    ]
+
+    templated = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True
+    )
+
+    # 5. generate
     out = generator(
         templated,
         max_new_tokens=max_new_tokens,
@@ -155,7 +177,9 @@ def answer_with_gemma(
         pad_token_id=tokenizer.pad_token_id,
     )[0]["generated_text"]
 
+    # 6. 
     return out[len(templated):].strip()
+
 
 
 # ---------------------------
